@@ -5,35 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Moneda</title>
     <script src="script.js" defer></script> 
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="contenedor">
     <div>
         <h1>Conversor Online</h1>
         <br>
-        <h2>Ingrese un Monto en pesos argentinos ($ARS)</h2>
-        <input type="number" id="monto"></input>
+        <h2 id="textoDescriptivo">Ingrese un Monto en pesos argentinos ($ARS)</h2>
+        <input type="number" id="monto" required></input>
         <button id="botonCalculo">Calcular</button>
     </div>
     <br>
-    <div id="resultados">
+    <br>
+    <div id="resultados" class="oculto">
         <div>
         <h1>Oficial</h1>
-        <h1 id="compraOficial"></h1>
-        <h1 id="ventaOficial"></h1>
+        <ul id="oficial"></ul>
         </div> 
         
         <div>
         <h1>Blue</h1>
-        <h1 id="compraBlue"></h1>
-        <h1 id="ventaBlue"></h1>
+        <ul id="blue"></ul>
         </div>
         
         <div>
         <h1>MEP</h1>
-        <h1 id="compraMep"></h1>
-        <h1 id="ventaMep"></h1>
+        <ul id="mep"></ul>
         </div> 
+        <a href="index.html" ><button id="reset" class="oculto">Ingresar otro Monto</button></a>
     </div>
-
+    </div>
+   
 </body>
 </html>

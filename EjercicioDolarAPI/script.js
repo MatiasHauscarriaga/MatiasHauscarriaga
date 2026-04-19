@@ -27,12 +27,77 @@ botonCalculo.addEventListener('click',async function consultaDolar(){
         }
     });
     console.log(valores);
+    
+    //Recupero monto ingresado
     const montoPesos=Number(document.getElementById("monto").value);
     console.log(montoPesos);
-    const resultados=document.getElementById("resultados");
-    
-   
 
+    //recupero div y lo muestro
+    const resultados=document.getElementById("resultados");
+    resultados.style.display='block';
+    //recupero objetos del div
+    const listaOficial=document.getElementById("oficial");
+    const listaBlue=document.getElementById("blue");
+    const listaMep=document.getElementById("mep");
+    
+
+    valores.forEach(dolar=>{
+        if (dolar.casa=="oficial"){
+            if (dolar.compra){
+            const item=document.createElement("li");    
+            item.textContent="";
+            let montoCompra=Number(montoPesos/dolar.compra);
+            item.textContent="Conversion Compra: USD$"+montoCompra.toFixed(2)+". Valor Compra:  USD$"+dolar.compra; 
+            listaOficial.appendChild(item);
+            }  
+            if(dolar.venta){
+            const item=document.createElement("li");    
+            item.textContent="";    
+            let montoVenta=Number(montoPesos/dolar.venta);
+            console.log(montoVenta.toFixed(2));    
+            item.textContent="Conversion Venta: USD$"+montoVenta.toFixed(2)+". Valor Venta:  USD$"+dolar.venta;
+            listaOficial.appendChild(item);
+            }
+        }
+        if (dolar.casa=="blue"){
+            if (dolar.compra){
+            const item=document.createElement("li");    
+            item.textContent="";
+            let montoCompra=Number(montoPesos/dolar.compra);
+            item.textContent="Conversion Compra: USD$"+montoCompra.toFixed(2)+". Valor Compra:  USD$"+dolar.compra; 
+            listaBlue.appendChild(item);
+            }  
+            if(dolar.venta){
+            const item=document.createElement("li");    
+            item.textContent="";    
+            let montoVenta=Number(montoPesos/dolar.venta);
+            console.log(montoVenta.toFixed(2));    
+            item.textContent="Conversion Venta: USD$"+montoVenta.toFixed(2)+". Valor Venta:  USD$"+dolar.venta;
+            listaBlue.appendChild(item);
+            }
+        }
+        if (dolar.casa=="bolsa"){
+            if (dolar.compra){
+            const item=document.createElement("li");    
+            item.textContent="";
+            let montoCompra=Number(montoPesos/dolar.compra);
+            item.textContent="Conversion Compra: USD$"+montoCompra.toFixed(2)+". Valor Compra:  USD$"+dolar.compra; 
+            listaMep.appendChild(item);
+            }  
+            if(dolar.venta){
+            const item=document.createElement("li");    
+            item.textContent="";    
+            let montoVenta=Number(montoPesos/dolar.venta);
+            console.log(montoVenta.toFixed(2));    
+            item.textContent="Conversion Venta: USD$"+montoVenta.toFixed(2)+". Valor Venta:  USD$"+dolar.venta;
+            listaMep.appendChild(item);
+            }
+        }    
+    })
+    const textoDescriptivo=document.getElementById("textoDescriptivo");
+    textoDescriptivo.style.display='none';
+    const botonReset=document.getElementById("reset");
+    botonReset.style.display='block';
     
 });
 

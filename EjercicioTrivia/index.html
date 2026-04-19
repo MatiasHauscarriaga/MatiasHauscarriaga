@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Trivia Online 🤓</title>
+    <script src="functions.js" defer></script>
+</head>
+<body>
+    <div id="main">
+        <h1>Bienvenido</h1>
+        <h2>Seleccione una categoria</h2>
+        <select id="categoria">
+        <option>Historia</option>
+        <option>Geografia</option>
+        <option>Ciencia</option>
+        <option>Deportes</option>
+        <option>Tecnología</option>
+        <option>Matematica</option>
+        </select>
+        <button id="start">Comenzar</button>
+    </div>
+
+    <div id="cuestionario" class="oculto">
+        <h2 id="numeroPregunta"></h2>
+        <h3 id="pregunta"></h3>
+        <h4 id="timer"></h4>
+        <div id="respuestas"></div>
+        <h4 id="progreso"></h4>
+    </div>
+    <a href="index.html"><button id="botonRecargar" class="oculto">Jugar otra vez</button></a>
+</body>
+</html>

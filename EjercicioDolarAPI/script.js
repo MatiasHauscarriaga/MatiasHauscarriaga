@@ -1,3 +1,4 @@
+
 console.log("conexion hecha");
 const botonCalculo = document.getElementById("botonCalculo");
 
@@ -100,6 +101,4 @@ botonCalculo.addEventListener('click',async function consultaDolar(){
     botonReset.style.display='block';
     
 });
-
-
 

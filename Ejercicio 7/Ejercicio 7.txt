@@ -1,0 +1,7 @@
+Ejercicio 7
+
+1) Login
+
+2) CRUD (carreras, materias, alumnos, profesores, examenes)
+
+3) Analitico (trayectoria)

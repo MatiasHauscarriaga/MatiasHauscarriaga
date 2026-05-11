@@ -1,15 +1,81 @@
 1) Creamos tabla Usuarios
 
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    edad INT
+);
+
 2) Agregamos los datos a mano
+
+INSERT INTO usuarios (nombre, email, edad)
+VALUES
+('Juan', 'juan@mail.com', FLOOR(18 + RAND() * 40)),
+('Ana', 'ana@mail.com', FLOOR(18 + RAND() * 40)),
+('Pedro', 'pedro@mail.com', FLOOR(18 + RAND() * 40));
 
 3) Leemos los datos de los usuarios con php
 
+Creo dos archivos en php, connection.php y Usuario.php:
+
+Connection.php:
+
+class Database {
+ private $host = "localhost";
+ private $db = "ejercicio5";
+ private $user = "root";
+ private $pass = "";
+ private $charset = "utf8mb4";
+ public function connect() {
+ try {
+ $dsn = "mysql:host=$this->host;dbname=$this->db;charset=$this->charset";
+ $pdo = new PDO($dsn, $this->user, $this->pass);
+ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ return $pdo;
+ } catch (PDOException $e) {
+ die("Error en la conexión: " . $e->getMessage());
+ }
+ }
+}
+	
+Usuario.php:
+
+require_once __DIR__ . '/../bd/connection.php';
+    class Usuario{
+        protected $db;
+        public function __construct() {
+        $this->db = (new Database())->connect();
+        }
+        public function getAll() {
+        $sql = "SELECT * FROM usuarios";
+        $stmt = $this->db->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }	
+
 4) Mostrar los datos
 
-Ejercicio 7
+En un archivo index.php inicio con una instancia en php:
 
-1) Login
+require_once "bd/connection.php";
+    require_once "Clases/Usuario.php";
 
-2) CRUD (carreras, materias, alumnos, profesores, examenes)
+    $usuarioModel = new Usuario;
+    $usuarios=$usuarioModel->getAll();
+    $nombresUsuarios=[];
+    foreach($usuarios as $u){
+        if ($u['nombre_usuario']){
+            $nombresUsuarios[]=$u['nombre_usuario'];
+        }
+    } 
 
-3) Analitico (trayectoria)
+Luego en una instancia de !Doctype=html hago lo siguiente para mostrar en pantalla una lista con todos los usuarios:
+
+    <ul>
+        <?php foreach ($nombresUsuarios as $n): ?>
+            <li><?php echo $n; ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+

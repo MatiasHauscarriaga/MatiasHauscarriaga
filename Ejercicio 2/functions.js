@@ -25,7 +25,8 @@ botonStart.addEventListener('click', async function comenzarJuego(){
     let preguntas = data;
 
     let cuestionario=document.getElementById('cuestionario');
-    cuestionario.style.display='block';
+    cuestionario.classList.remove('oculto');
+    cuestionario.classList.add('contenedor');
     let numeroPregunta=document.getElementById('numeroPregunta');
     let pregunta=document.getElementById('pregunta');
     const timer = document.getElementById("timer");
@@ -106,7 +107,9 @@ botonStart.addEventListener('click', async function comenzarJuego(){
 
         timeout = setTimeout(() => {
             console.log("Se acabó el tiempo ⏰💀");
-            clearInterval(intervalo); 
+            clearInterval(intervalo);
+            document.querySelectorAll("#respuestas button").forEach(b => b.disabled = true);
+            
             setTimeout(() => {
              siguiente();
             }, 1500);
@@ -121,6 +124,8 @@ botonStart.addEventListener('click', async function comenzarJuego(){
             mostrarPregunta();
         } else {
             console.log("Juego terminado 🎉");
+            const puntajeHTML = document.getElementById("progreso");
+            puntajeHTML.textContent = `Puntaje Final: ${puntaje}/5`;
             document.getElementById('botonRecargar').style.display='block'; 
         }
     }

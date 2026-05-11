@@ -1,0 +1,15 @@
+1) Creamos tabla Usuarios
+
+2) Agregamos los datos a mano
+
+3) Leemos los datos de los usuarios con php
+
+4) Mostrar los datos
+
+Ejercicio 7
+
+1) Login
+
+2) CRUD (carreras, materias, alumnos, profesores, examenes)
+
+3) Analitico (trayectoria)

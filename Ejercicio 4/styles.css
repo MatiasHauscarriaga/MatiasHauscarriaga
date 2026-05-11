@@ -1,0 +1,67 @@
+.fondo{
+    background-color: #1e293b;
+}
+
+.grid-cartas {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px; 
+  max-width: 600px;
+  margin: 40px auto; 
+}
+
+/* Cada carta */
+.carta {
+  aspect-ratio: 1 / 1; 
+  background-color: #F58027; 
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; 
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Hover coqueto */
+.carta:hover {
+  transform: scale(1.05);
+  background-color: #ee934d;
+}
+
+/* Carta descubierta */
+.carta.activa {
+  background-color: #22c55e; /* verde */
+}
+
+/* Carta equivocada */
+.carta.error {
+  background-color: #ef4444; /* rojo */
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.boton {
+  padding: 10px 25px; 
+  font-size: 15px;
+  font-family: sans-serif;
+  font:bold;
+  background-color: #F58027;
+}
+.oculto{
+  display: none;
+}
+
+.styleMensaje{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  font-size: 35px;
+  font-family: sans-serif;
+  font:bold;
+  color:#22c55e;
+}

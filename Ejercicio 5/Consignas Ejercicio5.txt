@@ -1,0 +1,56 @@
+1) Cuantos Alumnos tiene cada Materia.
+
+SELECT m.nombre_materia, COUNT(a.ID_alumno) AS cantidad_alumnos
+FROM materias m
+LEFT JOIN alumnos a ON a.curso = m.curso_materia AND a.ID_carrera = m.ID_carrera
+GROUP BY m.ID_materia, m.nombre_materia;
+
+2) Cuantos Alumnos tiene cada Carrera.
+
+SELECT c.nombre_carrera, COUNT(a.id_alumno) AS cantidad_alumnos
+FROM carreras c
+JOIN alumnos a ON c.id_carrera = a.id_carrera
+GROUP BY c.nombre_carrera;
+
+3)Modificar la BD para poder agregar las notas de los examenes.
+
+CREATE TABLE examenes (
+    ID_examen INT PRIMARY KEY AUTO_INCREMENT,
+    ID_alumno INT NOT NULL,
+    ID_materia INT NOT NULL,
+    fecha_examen DATE NOT NULL,
+    resultado DECIMAL(4,2) NOT NULL,
+    tipo_examen VARCHAR(50),
+
+    FOREIGN KEY (ID_alumno)
+        REFERENCES alumnos(ID_alumno),
+
+    FOREIGN KEY (ID_materia)
+        REFERENCES materias(ID_materia)
+);
+
+4) Agregar Fecha_Nacimiento para la tabla alumnos y Nota_aprobacion para la tabla materias.
+
+ALTER TABLE alumnos
+ADD Fecha_Nacimiento DATE;
+
+ALTER TABLE materias
+ADD Nota_aprobacion DECIMAL(4,2);
+
+5) Trayectoria de alumno (curso,ID_alumno, nota, fecha)
+
+SELECT
+    a.ID_alumno,
+    a.nombre,
+    a.curso,
+    m.nombre_materia,
+    e.resultado AS nota,
+    e.fecha_examen AS fecha
+FROM alumnos a
+JOIN examenes e
+    ON a.ID_alumno = e.ID_alumno
+JOIN materias m
+    ON e.ID_materia = m.ID_materia
+ORDER BY a.ID_alumno, e.fecha_examen;
+
+
